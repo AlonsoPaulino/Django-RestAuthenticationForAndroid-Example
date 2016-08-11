@@ -25,7 +25,7 @@ SECRET_KEY = '*3^pcqsld6t821e&c2*d2wgn)v$8-bw7^df*%f-nzwta4kq1^e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -119,4 +119,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+#STATIC_URL = '/static/'
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
+
+#SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https'
+
+# Allow all host headers
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
+
 STATIC_URL = '/static/'
+STATICFILES_DIRS = ( os.path.join('static'), )
